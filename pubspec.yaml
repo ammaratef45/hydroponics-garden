@@ -1,0 +1,32 @@
+name: hydroponic_garden
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.6 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  intl: ^0.18.1
+  firebase_core: ^2.15.0
+  firebase_auth: ^4.7.2
+  google_sign_in: ^6.1.4
+  cloud_firestore: ^4.8.4
+  firebase_storage: ^11.2.5
+  logger: ^2.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
+    
