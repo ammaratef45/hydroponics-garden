@@ -11,7 +11,7 @@ class StorageImage extends StatelessWidget {
         future: Storage.instance().imageUrl(id),
         builder: (context, snapshot) {
           if (snapshot.hasError || !snapshot.hasData) {
-            return const Text('failed to load picture');
+            return Image.asset('assets/plant.png');
           }
           return Image.network(snapshot.data!);
         });

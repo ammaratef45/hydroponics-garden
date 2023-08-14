@@ -13,7 +13,7 @@ class NewPlant extends StatefulWidget {
 }
 
 class _NewPlantState extends State<NewPlant> {
-  DropdownMenuItem _item(PlantDescription p) {
+  DropdownMenuItem<PlantDescription> _item(PlantDescription p) {
     return DropdownMenuItem(
       value: p,
       child: Text(p.name),
@@ -40,12 +40,14 @@ class _NewPlantState extends State<NewPlant> {
               if (!snapshot.hasData) {
                 return const Text('Loading...');
               }
-              widget.plant.description = snapshot.data![0];
+              if (widget.plant.description.id.isEmpty) {
+                widget.plant.description = snapshot.data![0];
+              }
               return DropdownButton(
                 items: snapshot.data!.map((e) => _item(e)).toList(),
                 onChanged: (e) {
                   setState(() {
-                    widget.plant.description = e;
+                    widget.plant.description = e!;
                   });
                 },
                 value: widget.plant.description,
