@@ -1,7 +1,6 @@
 final class PlantDescription {
   final String id;
   final String name;
-  final String assetPath;
   final int daysToSprout;
   final int sproutToHarvest;
   final int goodFor;
@@ -12,7 +11,6 @@ final class PlantDescription {
   PlantDescription(
       {required this.id,
       required this.name,
-      required this.assetPath,
       required this.daysToSprout,
       required this.sproutToHarvest,
       required this.goodFor});

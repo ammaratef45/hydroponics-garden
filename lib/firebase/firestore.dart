@@ -27,7 +27,6 @@ class FireStore {
         .map((e) => PlantDescription(
             id: e.id,
             name: e.data()['name'],
-            assetPath: 'assetPath',
             daysToSprout: e.data()['daysToSprout'],
             sproutToHarvest: e.data()['sproutToHarvest'],
             goodFor: e.data()['goodFor']))

@@ -49,7 +49,6 @@ class PlantsPage extends StatelessWidget {
           Plant plant = Plant(PlantDescription(
               id: '',
               name: '',
-              assetPath: '',
               daysToSprout: 0,
               sproutToHarvest: 0,
               goodFor: 0));
