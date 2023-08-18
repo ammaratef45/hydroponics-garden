@@ -11,6 +11,7 @@ class Auth {
 
   Auth._() {
     _auth = FirebaseAuth.instance;
+    _auth.setPersistence(Persistence.LOCAL);
     _auth.userChanges().listen((user) {
       _user = user;
     });
