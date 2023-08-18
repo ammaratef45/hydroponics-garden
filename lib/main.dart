@@ -40,6 +40,11 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (contex) {
               return const PlantsPage();
             });
+          case LoginPage.routeName:
+            return MaterialPageRoute(builder: (contex) {
+              return const LoginPage();
+            });
+
           default:
             assert(false, 'Need to implement ${settings.name}');
         }

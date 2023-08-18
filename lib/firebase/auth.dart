@@ -34,4 +34,8 @@ class Auth {
     }
     throw UnimplementedError('currently only web is supported');
   }
+
+  Future<void> logout() {
+    return _auth.signOut();
+  }
 }

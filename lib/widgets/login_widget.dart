@@ -3,6 +3,7 @@ import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/widgets/plants_widget.dart';
 
 class LoginPage extends StatelessWidget {
+  static const String routeName = 'login';
   const LoginPage({super.key});
 
   @override
