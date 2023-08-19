@@ -3,6 +3,8 @@ import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/firebase/firestore.dart';
 import 'package:hydroponic_garden/model/plant.dart';
 import 'package:hydroponic_garden/model/plant_description.dart';
+import 'package:hydroponic_garden/widgets/error_text_widget.dart';
+import 'package:hydroponic_garden/widgets/loading_text_widget.dart';
 import 'package:hydroponic_garden/widgets/login_widget.dart';
 import 'package:hydroponic_garden/widgets/new_plant_widget.dart';
 import 'package:hydroponic_garden/widgets/plant_widget.dart';
@@ -33,10 +35,10 @@ class PlantsPage extends StatelessWidget {
           stream: FireStore.instance().userPlants(Auth.instance().user!.uid),
           builder: (context, snapshot) {
             if (snapshot.hasError) {
-              return const Text('Failed to fetch data...');
+              return ErrorTextWidget.failedToLoad;
             }
             if (!snapshot.hasData) {
-              return const Text('Loading...');
+              return LoadingTextWidget.standard;
             }
             return ListView(
               children: snapshot.data!
