@@ -1,3 +1,4 @@
+import 'package:animated_typing/animated_typing.dart';
 import 'package:flutter/material.dart';
 
 class LoadingTextWidget extends StatelessWidget {
@@ -9,10 +10,14 @@ class LoadingTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Text(
-      text,
-      style: const TextStyle(
-          fontWeight: FontWeight.bold, color: Colors.green, fontSize: 20),
-    ));
+      child: AnimatedTyping(
+        text: text,
+        style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.green,
+          fontSize: 20,
+        ),
+      ),
+    );
   }
 }

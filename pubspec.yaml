@@ -17,6 +17,7 @@ dependencies:
   cloud_firestore: ^4.8.4
   firebase_storage: ^11.2.5
   logger: ^2.0.1
+  animated_typing: ^0.2.0
 
 dev_dependencies:
   flutter_test:

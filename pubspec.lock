@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.4"
+  animated_typing:
+    dependency: "direct main"
+    description:
+      name: animated_typing
+      sha256: "4fe26e295e22638b3dd6b3664587b9ccaa58f05258d7f1164f25c87fb8c67198"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   async:
     dependency: transitive
     description:
