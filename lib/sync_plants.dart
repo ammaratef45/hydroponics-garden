@@ -209,4 +209,76 @@ List<Map<String, dynamic>> values = [
     'sproutToHarvest': 21,
     'goodFor': 45
   },
+  {
+    'name': 'Banana Peppers',
+    'daysToSprout': 11,
+    'sproutToHarvest': 73,
+    'goodFor': 81
+  },
+  {
+    'name': 'Cape Gooseberry',
+    'daysToSprout': 19,
+    'sproutToHarvest': 67,
+    'goodFor': 120
+  },
+  {
+    'name': 'Cucumbers',
+    'daysToSprout': 12,
+    'sproutToHarvest': 55,
+    'goodFor': 70
+  },
+  {
+    'name': 'Mini Eggplant',
+    'daysToSprout': 9,
+    'sproutToHarvest': 68,
+    'goodFor': 25
+  },
+  {
+    'name': 'Mini Strawberries',
+    'daysToSprout': 13,
+    'sproutToHarvest': 110,
+    'goodFor': 183
+  },
+  {
+    'name': 'Sugar Snap Peas',
+    'daysToSprout': 11,
+    'sproutToHarvest': 70,
+    'goodFor': 70
+  },
+  {
+    'name': 'Sweet Peppers',
+    'daysToSprout': 19,
+    'sproutToHarvest': 79,
+    'goodFor': 98
+  },
+  {
+    'name': 'Black Cherry Tomatoes',
+    'daysToSprout': 8,
+    'sproutToHarvest': 70,
+    'goodFor': 84
+  },
+  {
+    'name': 'Jubilee Tomatoes',
+    'daysToSprout': 8,
+    'sproutToHarvest': 80,
+    'goodFor': 84
+  },
+  {
+    'name': 'Roma Tomatoes',
+    'daysToSprout': 8,
+    'sproutToHarvest': 78,
+    'goodFor': 84
+  },
+  {
+    'name': 'San Marzano Tomatoes',
+    'daysToSprout': 8,
+    'sproutToHarvest': 78,
+    'goodFor': 84
+  },
+  {
+    'name': 'Rio Grande Tomatoes',
+    'daysToSprout': 8,
+    'sproutToHarvest': 75,
+    'goodFor': 84
+  },
 ];
