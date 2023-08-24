@@ -281,4 +281,55 @@ List<Map<String, dynamic>> values = [
     'sproutToHarvest': 75,
     'goodFor': 84
   },
+  {
+    'name': 'Night-Scented Stock',
+    'daysToSprout': 13,
+    'sproutToHarvest': 60,
+    'goodFor': 100
+  },
+  {'name': 'Borage', 'daysToSprout': 8, 'sproutToHarvest': 55, 'goodFor': 100},
+  {'name': 'Torenia', 'daysToSprout': 13, 'sproutToHarvest': 91, 'goodFor': 91},
+  {
+    'name': 'Red Marietta Gold',
+    'daysToSprout': 11,
+    'sproutToHarvest': 60,
+    'goodFor': 100
+  },
+  {
+    'name': 'Radio Calendula',
+    'daysToSprout': 10,
+    'sproutToHarvest': 53,
+    'goodFor': 100
+  },
+  {'name': 'Petunia', 'daysToSprout': 10, 'sproutToHarvest': 35, 'goodFor': 35},
+  {
+    'name': 'Oopsy Daisy',
+    'daysToSprout': 14,
+    'sproutToHarvest': 53,
+    'goodFor': 53
+  },
+  {
+    'name': 'Lavender',
+    'daysToSprout': 23,
+    'sproutToHarvest': 105,
+    'goodFor': 105
+  },
+  {
+    'name': 'Fiesta Gitana',
+    'daysToSprout': 14,
+    'sproutToHarvest': 53,
+    'goodFor': 53
+  },
+  {
+    'name': 'Chamomille',
+    'daysToSprout': 12,
+    'sproutToHarvest': 98,
+    'goodFor': 56
+  },
+  {
+    'name': 'Campanula',
+    'daysToSprout': 21,
+    'sproutToHarvest': 65,
+    'goodFor': 65
+  },
 ];
