@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponic_garden/constants.dart';
 import 'package:hydroponic_garden/model/plant.dart';
+import 'package:hydroponic_garden/widgets/main_widget.dart';
 import 'package:hydroponic_garden/widgets/storage_image.dart';
 
 class PlantPage extends StatefulWidget {
@@ -16,11 +17,8 @@ class PlantPage extends StatefulWidget {
 class _PlantPageState extends State<PlantPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.plant.description.name),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
+    return MainWidget(
+      title: widget.plant.description.name,
       body: SingleChildScrollView(
         child: Column(
           children: [

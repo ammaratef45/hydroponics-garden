@@ -5,7 +5,7 @@ import 'package:hydroponic_garden/model/plant.dart';
 import 'package:hydroponic_garden/model/plant_description.dart';
 import 'package:hydroponic_garden/widgets/error_text_widget.dart';
 import 'package:hydroponic_garden/widgets/loading_text_widget.dart';
-import 'package:hydroponic_garden/widgets/login_widget.dart';
+import 'package:hydroponic_garden/widgets/main_widget.dart';
 import 'package:hydroponic_garden/widgets/new_plant_widget.dart';
 import 'package:hydroponic_garden/widgets/plant_widget.dart';
 import 'package:hydroponic_garden/widgets/storage_image.dart';
@@ -16,21 +16,9 @@ class PlantsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Plants'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Auth.instance().logout().then((value) =>
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, LoginPage.routeName, (route) => false));
-            },
-            icon: const Icon(Icons.logout),
-          ),
-        ],
-      ),
+    return MainWidget(
+      logoutIcon: true,
+      title: 'Plants',
       body: StreamBuilder<List<Plant>>(
           stream: FireStore.instance().userPlants(Auth.instance().user!.uid),
           builder: (context, snapshot) {
