@@ -1,0 +1,10 @@
+name: Scan for todos
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  todo-to-Issue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: alstr/todo-to-issue-action@v4
