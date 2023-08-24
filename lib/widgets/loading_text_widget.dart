@@ -12,6 +12,7 @@ class LoadingTextWidget extends StatelessWidget {
     return Center(
       child: AnimatedTyping(
         text: text,
+        loop: true,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: Colors.green,
