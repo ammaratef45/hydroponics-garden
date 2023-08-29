@@ -14,6 +14,12 @@ class Plant {
     plantedDate = _format.parse(s);
   }
 
+  String get sproutDate =>
+      _format.format(plantedDate.add(Duration(days: description.daysToSprout)));
+
+  String get harvestDate => _format
+      .format(plantedDate.add(Duration(days: description.seedToHarvest)));
+
   Plant(this.description);
 
   static Plant fromDoc(Map<String, dynamic> doc, PlantDescription description) {
@@ -29,19 +35,5 @@ class Plant {
       kDateFiled: plantedDateString,
       kSproutedFiled: sprouted
     };
-  }
-
-  String health() {
-    int daysSincePlanted = DateTime.now().difference(plantedDate).inDays;
-    if (!sprouted && daysSincePlanted >= description.daysToSprout) {
-      return 'Check Plant';
-    } else if (daysSincePlanted >= description.seedToHarvest) {
-      if (daysSincePlanted < description.goodFor) {
-        return 'Ready to Harvest';
-      } else {
-        return 'Time to Replace';
-      }
-    }
-    return 'Good';
   }
 }

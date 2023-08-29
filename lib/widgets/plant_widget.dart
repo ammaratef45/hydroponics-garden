@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown_editor/editor_preview.dart';
 import 'package:hydroponic_garden/constants.dart';
 import 'package:hydroponic_garden/model/plant.dart';
 import 'package:hydroponic_garden/widgets/main_widget.dart';
@@ -20,10 +21,10 @@ class _PlantPageState extends State<PlantPage> {
     return MainWidget(
       title: widget.plant.description.name,
       body: SingleChildScrollView(
+        padding: const EdgeInsets.all(10),
         child: Column(
           children: [
             StorageImage(widget.plant.description.id),
-            Text(widget.plant.description.name),
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -59,7 +60,21 @@ class _PlantPageState extends State<PlantPage> {
                 )
               ],
             ),
-            Text('Health: ${widget.plant.health()}'),
+            // TODO: change style (make the part before colon bold)
+            // TODO: show remaining number of days with the date (maybe click to toggle)
+            if (!widget.plant.sprouted)
+              Text('Expected Sprout date: ${widget.plant.sproutDate}'),
+            Text('Expected Harvest date: ${widget.plant.harvestDate}'),
+            const Text(
+              'Care instructions:',
+              style: TextStyle(
+                fontSize: 21,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            MarkdownPreview(
+              text: widget.plant.description.care,
+            ),
           ],
         ),
       ),

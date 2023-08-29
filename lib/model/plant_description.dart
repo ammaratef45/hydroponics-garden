@@ -1,6 +1,9 @@
 final class PlantDescription {
   final String id;
   final String name;
+  // TODO: add care instructions for plants
+  final String care = 'care instructions not added yet\n'
+      'want to contribite? visit [Github repo](https://github.com/ammaratef45/hydroponics-garden)';
   final int daysToSprout;
   final int sproutToHarvest;
   final int goodFor;

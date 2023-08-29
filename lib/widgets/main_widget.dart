@@ -19,7 +19,7 @@ class MainWidget extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Plants'),
+        title: Text(title),
         actions: [
           if (logoutIcon)
             IconButton(

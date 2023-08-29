@@ -34,7 +34,6 @@ class PlantsPage extends StatelessWidget {
                         leading: StorageImage(e.description.id),
                         title: Text(e.description.name),
                         subtitle: Text('planted: ${e.plantedDateString}'),
-                        trailing: Text(e.health()),
                         onTap: () => Navigator.pushNamed(
                           context,
                           PlantPage.routeName,
