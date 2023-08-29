@@ -332,4 +332,65 @@ List<Map<String, dynamic>> values = [
     'sproutToHarvest': 65,
     'goodFor': 65
   },
+  {
+    'name': 'Lemon Balm',
+    'daysToSprout': 11,
+    'sproutToHarvest': 70,
+    'goodFor': 70
+  },
+  {'name': 'Savory', 'daysToSprout': 11, 'sproutToHarvest': 55, 'goodFor': 70},
+  {'name': 'Chervil', 'daysToSprout': 12, 'sproutToHarvest': 65, 'goodFor': 70},
+  {'name': 'Zaatar', 'daysToSprout': 11, 'sproutToHarvest': 25, 'goodFor': 65},
+  {
+    'name': 'Purple Basil',
+    'daysToSprout': 11,
+    'sproutToHarvest': 25,
+    'goodFor': 135
+  },
+  {'name': 'Thyme', 'daysToSprout': 14, 'sproutToHarvest': 93, 'goodFor': 56},
+  {
+    'name': 'Thai Basil',
+    'daysToSprout': 8,
+    'sproutToHarvest': 64,
+    'goodFor': 70
+  },
+  {'name': 'Stevia', 'daysToSprout': 18, 'sproutToHarvest': 50, 'goodFor': 50},
+  {'name': 'Shiso', 'daysToSprout': 11, 'sproutToHarvest': 55, 'goodFor': 56},
+  {'name': 'Sage', 'daysToSprout': 14, 'sproutToHarvest': 85, 'goodFor': 56},
+  {
+    'name': 'Rosemary',
+    'daysToSprout': 20,
+    'sproutToHarvest': 42,
+    'goodFor': 365
+  },
+  {
+    'name': 'Italian Parsley',
+    'daysToSprout': 20,
+    'sproutToHarvest': 80,
+    'goodFor': 40
+  },
+  {'name': 'Oregano', 'daysToSprout': 14, 'sproutToHarvest': 85, 'goodFor': 70},
+  {'name': 'Mint', 'daysToSprout': 16, 'sproutToHarvest': 68, 'goodFor': 56},
+  {
+    'name': 'Mexican Tarragon',
+    'daysToSprout': 9,
+    'sproutToHarvest': 80,
+    'goodFor': 98
+  },
+  {
+    'name': 'Lemongrass',
+    'daysToSprout': 13,
+    'sproutToHarvest': 100,
+    'goodFor': 100
+  },
+  {'name': 'Dill', 'daysToSprout': 14, 'sproutToHarvest': 45, 'goodFor': 42},
+  {
+    'name': 'Cilantro',
+    'daysToSprout': 13,
+    'sproutToHarvest': 53,
+    'goodFor': 42
+  },
+  {'name': 'Chives', 'daysToSprout': 14, 'sproutToHarvest': 80, 'goodFor': 70},
+  {'name': 'Catnip', 'daysToSprout': 12, 'sproutToHarvest': 45, 'goodFor': 70},
+  {'name': 'Basil', 'daysToSprout': 13, 'sproutToHarvest': 68, 'goodFor': 70},
 ];
