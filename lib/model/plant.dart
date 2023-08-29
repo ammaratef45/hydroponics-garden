@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 class Plant {
   final DateFormat _format = DateFormat.yMMMMEEEEd();
 
+  String id;
   PlantDescription description;
   DateTime plantedDate = DateTime.now();
   bool sprouted = false;
@@ -20,10 +21,11 @@ class Plant {
   String get harvestDate => _format
       .format(plantedDate.add(Duration(days: description.seedToHarvest)));
 
-  Plant(this.description);
+  Plant(this.id, this.description);
 
-  static Plant fromDoc(Map<String, dynamic> doc, PlantDescription description) {
-    Plant p = Plant(description);
+  static Plant fromDoc(
+      Map<String, dynamic> doc, String id, PlantDescription description) {
+    Plant p = Plant(id, description);
     p.setPlantedDateFromString(doc[kDateFiled]);
     p.sprouted = doc[kSproutedFiled];
     return p;

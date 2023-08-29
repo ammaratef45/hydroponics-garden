@@ -9,6 +9,7 @@ import 'package:hydroponic_garden/widgets/main_widget.dart';
 import 'package:hydroponic_garden/widgets/new_plant_widget.dart';
 import 'package:hydroponic_garden/widgets/plant_widget.dart';
 import 'package:hydroponic_garden/widgets/storage_image.dart';
+import 'package:hydroponic_garden/widgets/yes_no_dialog.dart';
 
 class PlantsPage extends StatelessWidget {
   static const routeName = 'plants';
@@ -34,6 +35,29 @@ class PlantsPage extends StatelessWidget {
                         leading: StorageImage(e.description.id),
                         title: Text(e.description.name),
                         subtitle: Text('planted: ${e.plantedDateString}'),
+                        trailing: IconButton(
+                            onPressed: () async {
+                              bool res = await showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return YesNoDialog(
+                                      context: context,
+                                      titleText: 'Are you sure?',
+                                      contentText:
+                                          'Deleting the plant can NOT be reversed, '
+                                          'are you sure you want to delete this ${e.description.name} plant?',
+                                      okText: 'Delete',
+                                      cancelText: 'Abort',
+                                    );
+                                  });
+                              if (res) {
+                                await FireStore.instance().deletePlant(
+                                  Auth.instance().user!.uid,
+                                  e,
+                                );
+                              }
+                            },
+                            icon: const Icon(Icons.delete)),
                         onTap: () => Navigator.pushNamed(
                           context,
                           PlantPage.routeName,
@@ -46,12 +70,16 @@ class PlantsPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () async {
-          Plant plant = Plant(PlantDescription(
-              id: '',
-              name: '',
-              daysToSprout: 0,
-              sproutToHarvest: 0,
-              goodFor: 0));
+          // TODO: remove the need to have this object
+          //  we can have separate dialogs to pick up the date and the plant
+          Plant plant = Plant(
+              '',
+              PlantDescription(
+                  id: '',
+                  name: '',
+                  daysToSprout: 0,
+                  sproutToHarvest: 0,
+                  goodFor: 0));
           DateTime? time = await showDialog<DateTime>(
             context: context,
             barrierDismissible: false,

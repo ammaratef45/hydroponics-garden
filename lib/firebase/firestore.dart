@@ -53,7 +53,7 @@ class FireStore {
             break;
           }
         }
-        return Plant.fromDoc(e.data(), description);
+        return Plant.fromDoc(e.data(), e.id, description);
       }).toList();
     });
   }
@@ -64,5 +64,14 @@ class FireStore {
         .doc(uid)
         .collection(kPlantsList)
         .add(p.doc());
+  }
+
+  Future<void> deletePlant(String uid, Plant p) {
+    return _store
+        .collection(kUsersCollectionPath)
+        .doc(uid)
+        .collection(kPlantsList)
+        .doc(p.id)
+        .delete();
   }
 }
