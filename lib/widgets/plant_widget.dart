@@ -63,8 +63,8 @@ class _PlantPageState extends State<PlantPage> {
             // TODO: change style (make the part before colon bold)
             // TODO: show remaining number of days with the date (maybe click to toggle)
             if (!widget.plant.sprouted)
-              Text('Expected Sprout date: ${widget.plant.sproutDate}'),
-            Text('Expected Harvest date: ${widget.plant.harvestDate}'),
+              Text('Expected Sprout date: ${widget.plant.sproutDateString}'),
+            Text('Expected Harvest date: ${widget.plant.harvestDateString}'),
             const Text(
               'Care instructions:',
               style: TextStyle(

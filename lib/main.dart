@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/firebase/firebase_options.dart';
 import 'package:hydroponic_garden/model/plant.dart';
+import 'package:hydroponic_garden/widgets/calendar_widget.dart';
 import 'package:hydroponic_garden/widgets/login_widget.dart';
 import 'package:hydroponic_garden/widgets/plant_widget.dart';
 import 'package:hydroponic_garden/widgets/plants_widget.dart';
@@ -45,7 +46,10 @@ class MyApp extends StatelessWidget {
             return MaterialPageRoute(builder: (contex) {
               return const LoginPage();
             });
-
+          case CalendarPage.routeName:
+            return MaterialPageRoute(builder: (context) {
+              return CalendarPage();
+            });
           default:
             assert(false, 'Need to implement ${settings.name}');
         }

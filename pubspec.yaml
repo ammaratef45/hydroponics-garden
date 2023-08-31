@@ -19,6 +19,7 @@ dependencies:
   logger: ^2.0.1
   animated_typing: ^0.2.1
   flutter_markdown_editor: ^2.0.0
+  calendar_view: ^1.0.4
 
 dev_dependencies:
   flutter_test:

@@ -19,6 +19,7 @@ class PlantsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MainWidget(
       logoutIcon: true,
+      showBottomNavigationMenu: true,
       title: 'Plants',
       body: StreamBuilder<List<Plant>>(
           stream: FireStore.instance().userPlants(Auth.instance().user!.uid),

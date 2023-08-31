@@ -15,11 +15,22 @@ class Plant {
     plantedDate = _format.parse(s);
   }
 
-  String get sproutDate =>
-      _format.format(plantedDate.add(Duration(days: description.daysToSprout)));
+  DateTime get sproutDate =>
+      plantedDate.add(Duration(days: description.daysToSprout));
+  String get sproutDateString => _format.format(sproutDate);
 
-  String get harvestDate => _format
-      .format(plantedDate.add(Duration(days: description.seedToHarvest)));
+  DateTime get harvestDate =>
+      plantedDate.add(Duration(days: description.seedToHarvest));
+  String get harvestDateString => _format.format(harvestDate);
+
+  DateTime get endHarvestDate => harvestDate.add(
+        Duration(
+          days: description.goodFor,
+          hours: 23,
+          minutes: 59,
+          seconds: 59,
+        ),
+      );
 
   Plant(this.id, this.description);
 
