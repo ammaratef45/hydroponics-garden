@@ -17,7 +17,8 @@ class PlantsPage extends StatelessWidget {
   const PlantsPage({super.key});
 
   Future<void> _startNewPlantFlow(BuildContext context) async {
-    PlantDescription? description = await showDialog<PlantDescription>(
+    List<PlantDescription>? descriptions =
+        await showDialog<List<PlantDescription>>(
       context: context,
       builder: (context) {
         return const Dialog(
@@ -25,8 +26,10 @@ class PlantsPage extends StatelessWidget {
         );
       },
     );
-    // ignore: use_build_context_synchronously
-    if (description == null || !context.mounted) {
+    if (descriptions?.isEmpty == null ||
+        descriptions!.isEmpty ||
+        // ignore: use_build_context_synchronously
+        !context.mounted) {
       return;
     }
     DateTime? sowDate = await showDatePicker(
@@ -39,9 +42,11 @@ class PlantsPage extends StatelessWidget {
     if (sowDate == null || !context.mounted) {
       return;
     }
-    Plant p = Plant('', description);
-    p.plantedDate = sowDate;
-    await FireStore.instance().addUpdatePlant(Auth.instance().user!.uid, p);
+    for (PlantDescription description in descriptions) {
+      Plant p = Plant('', description);
+      p.plantedDate = sowDate;
+      await FireStore.instance().addUpdatePlant(Auth.instance().user!.uid, p);
+    }
   }
 
   @override
