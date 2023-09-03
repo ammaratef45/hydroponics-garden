@@ -11,6 +11,7 @@ class MainWidget extends StatelessWidget {
   final bool logoutIcon;
   final bool showBottomNavigationMenu;
   final int navigationIndex;
+  final List<IconButton> actions;
   const MainWidget(
       {required this.body,
       this.floatingActionButton,
@@ -18,6 +19,7 @@ class MainWidget extends StatelessWidget {
       this.logoutIcon = false,
       this.showBottomNavigationMenu = false,
       this.navigationIndex = 0,
+      this.actions = const [],
       super.key});
 
   @override
@@ -27,6 +29,7 @@ class MainWidget extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(title),
         actions: [
+          ...actions,
           if (logoutIcon)
             IconButton(
               onPressed: () {

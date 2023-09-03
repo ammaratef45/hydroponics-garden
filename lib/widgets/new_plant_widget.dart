@@ -15,8 +15,7 @@ class _PickPlantState extends State<PickPlant> {
   PlantDescription? description;
   List<PlantDescription> selected = [];
 
-  Widget _selectedWidget(
-      PlantDescription d, void Function(void Function()) setstate) {
+  Widget _selectedWidget(PlantDescription d) {
     return Center(
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -24,7 +23,7 @@ class _PickPlantState extends State<PickPlant> {
           Text(d.name),
           IconButton(
             onPressed: () {
-              setstate(
+              setState(
                 () {
                   selected.remove(d);
                 },
@@ -90,7 +89,7 @@ class _PickPlantState extends State<PickPlant> {
                 ],
               ),
               const SizedBox(height: 12),
-              ...selected.map((e) => _selectedWidget(e, setState)).toList(),
+              ...selected.map((e) => _selectedWidget(e)).toList(),
               const SizedBox(height: 12),
               const Text(
                 'Click next to choose sow date',

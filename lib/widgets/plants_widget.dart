@@ -12,9 +12,33 @@ import 'package:hydroponic_garden/widgets/plant_widget.dart';
 import 'package:hydroponic_garden/widgets/storage_image.dart';
 import 'package:hydroponic_garden/widgets/yes_no_dialog.dart';
 
-class PlantsPage extends StatelessWidget {
+enum PlantOrderOption {
+  none('None'),
+  sowDate('Planted Date'),
+  harvestDate('Harvest Date'),
+  name('Name');
+
+  const PlantOrderOption(this.strVal);
+
+  final String strVal;
+}
+
+class PlantOrder {
+  PlantOrderOption option;
+  bool ascending;
+  PlantOrder(this.option, [this.ascending = true]);
+}
+
+class PlantsPage extends StatefulWidget {
   static const routeName = 'plants';
   const PlantsPage({super.key});
+
+  @override
+  State<PlantsPage> createState() => _PlantsPageState();
+}
+
+class _PlantsPageState extends State<PlantsPage> {
+  PlantOrder order = PlantOrder(PlantOrderOption.none);
 
   Future<void> _startNewPlantFlow(BuildContext context) async {
     List<PlantDescription>? descriptions =
@@ -49,12 +73,83 @@ class PlantsPage extends StatelessWidget {
     }
   }
 
+  Future<void> _selectOrder() async {
+    PlantOrder? o = await showDialog<PlantOrder>(
+      context: context,
+      builder: (context) {
+        bool ascending = order.ascending;
+        return Dialog(
+          child: ListView(
+            children: [
+              StatefulBuilder(builder: (context, setState) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text('Ascending?'),
+                    Switch(
+                      onChanged: (value) {
+                        setState(() {
+                          ascending = value;
+                        });
+                      },
+                      value: ascending,
+                    ),
+                  ],
+                );
+              }),
+              ...PlantOrderOption.values
+                  .map(
+                    (e) => ListTile(
+                      title: Text(e.strVal),
+                      onTap: () => Navigator.pop(
+                        context,
+                        PlantOrder(e, ascending),
+                      ),
+                      selected: order.option == e,
+                    ),
+                  )
+                  .toList(),
+            ],
+          ),
+        );
+      },
+    );
+    if (o != null) {
+      setState(() {
+        order = o;
+      });
+    }
+  }
+
+  int Function(Plant, Plant) _comapre() {
+    return (p1, p2) {
+      switch (order.option) {
+        case PlantOrderOption.harvestDate:
+          return p1.harvestDate.compareTo(p2.harvestDate);
+        case PlantOrderOption.sowDate:
+          return p1.plantedDate.compareTo(p2.plantedDate);
+        case PlantOrderOption.name:
+          return p1.description.name.compareTo(p2.description.name);
+        case PlantOrderOption.none:
+        default:
+          return 0;
+      }
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
     return MainWidget(
       logoutIcon: true,
       showBottomNavigationMenu: true,
       title: 'Plants',
+      actions: [
+        IconButton(
+          onPressed: _selectOrder,
+          icon: const Icon(Icons.reorder),
+        ),
+      ],
       body: StreamBuilder<List<Plant>>(
           stream: FireStore.instance().userPlants(Auth.instance().user!.uid),
           builder: (context, snapshot) {
@@ -64,8 +159,13 @@ class PlantsPage extends StatelessWidget {
             if (!snapshot.hasData) {
               return LoadingTextWidget.standard;
             }
+            List<Plant> plants = snapshot.data!;
+            plants.sort(_comapre());
+            if (!order.ascending) {
+              plants = plants.reversed.toList();
+            }
             return ListView(
-              children: snapshot.data!
+              children: plants
                   .map((e) => ListTile(
                         leading: StorageImage(e.description.id),
                         title: Text(e.description.name),
