@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hydroponic_garden/constants.dart';
 import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/firebase/firestore.dart';
 import 'package:hydroponic_garden/model/plant.dart';
@@ -14,6 +15,34 @@ import 'package:hydroponic_garden/widgets/yes_no_dialog.dart';
 class PlantsPage extends StatelessWidget {
   static const routeName = 'plants';
   const PlantsPage({super.key});
+
+  Future<void> _startNewPlantFlow(BuildContext context) async {
+    PlantDescription? description = await showDialog<PlantDescription>(
+      context: context,
+      builder: (context) {
+        return const Dialog(
+          child: PickPlant(),
+        );
+      },
+    );
+    // ignore: use_build_context_synchronously
+    if (description == null || !context.mounted) {
+      return;
+    }
+    DateTime? sowDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: firstDate,
+      lastDate: DateTime.now(),
+    );
+    // ignore: use_build_context_synchronously
+    if (sowDate == null || !context.mounted) {
+      return;
+    }
+    Plant p = Plant('', description);
+    p.plantedDate = sowDate;
+    await FireStore.instance().addUpdatePlant(Auth.instance().user!.uid, p);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,30 +100,7 @@ class PlantsPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () async {
-          // TODO: remove the need to have this object
-          //  we can have separate dialogs to pick up the date and the plant
-          Plant plant = Plant(
-              '',
-              PlantDescription(
-                  id: '',
-                  name: '',
-                  daysToSprout: 0,
-                  sproutToHarvest: 0,
-                  goodFor: 0));
-          DateTime? time = await showDialog<DateTime>(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) {
-              return Dialog(
-                child: NewPlant(plant),
-              );
-            },
-          );
-          if (time != null) {
-            plant.plantedDate = time;
-            await FireStore.instance()
-                .addUpdatePlant(Auth.instance().user!.uid, plant);
-          }
+          await _startNewPlantFlow(context);
         },
       ),
     );
