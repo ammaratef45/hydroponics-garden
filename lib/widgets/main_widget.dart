@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/widgets/calendar_widget.dart';
+import 'package:hydroponic_garden/widgets/device_widget.dart';
 import 'package:hydroponic_garden/widgets/login_widget.dart';
 import 'package:hydroponic_garden/widgets/plants_widget.dart';
 
@@ -54,6 +55,9 @@ class MainWidget extends StatelessWidget {
                   case 1:
                     Navigator.popAndPushNamed(context, CalendarPage.routeName);
                     break;
+                  case 2:
+                    Navigator.popAndPushNamed(context, DevicePage.routeName);
+                    break;
                   default:
                     throw 'invalid page';
                 }
@@ -66,6 +70,10 @@ class MainWidget extends StatelessWidget {
                 BottomNavigationBarItem(
                   icon: Icon(Icons.calendar_month),
                   label: 'calendar',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.devices),
+                  label: 'Device',
                 ),
               ],
             )

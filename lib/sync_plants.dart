@@ -37,7 +37,14 @@ Future<void> publish(PlantDescription p) {
 PlantDescription existAlready(List<PlantDescription> list, PlantDescription p) {
   for (PlantDescription element in list) {
     if (element.name == p.name) {
-      return element;
+      return PlantDescription(
+        id: element.id,
+        name: element.name,
+        daysToSprout: p.daysToSprout,
+        sproutToHarvest: p.seedToHarvest,
+        goodFor: p.goodFor,
+        care: p.care,
+      );
     }
   }
   return p;
@@ -48,17 +55,22 @@ Map<String, dynamic> toDoc(PlantDescription p) {
     'name': p.name,
     'daysToSprout': p.daysToSprout,
     'sproutToHarvest': p.seedToHarvest,
-    'goodFor': p.goodFor
+    'goodFor': p.goodFor,
+    'care': p.care,
   };
 }
 
 PlantDescription fromDoc(Map<String, dynamic> val) {
   return PlantDescription(
-      id: val['id'] ?? '',
-      name: val['name'],
-      daysToSprout: val['daysToSprout'],
-      sproutToHarvest: val['sproutToHarvest'],
-      goodFor: val['goodFor']);
+    id: val['id'] ?? '',
+    name: val['name'],
+    daysToSprout: val['daysToSprout'],
+    sproutToHarvest: val['sproutToHarvest'],
+    goodFor: val['goodFor'],
+    care: val['care'] ??
+        'care instructions not added yet\n'
+            'want to contribite? visit [Github repo](https://github.com/ammaratef45/hydroponics-garden)',
+  );
 }
 
 List<Map<String, dynamic>> values = [
@@ -66,7 +78,10 @@ List<Map<String, dynamic>> values = [
     'name': 'Bulls Blood Beets',
     'daysToSprout': 14,
     'sproutToHarvest': 48,
-    'goodFor': 32
+    'goodFor': 32,
+    'care': '- Remember thinning after first true leaf\n'
+        '- Check roots monthly, remove brown or out of control roots\n'
+        '- Harvest whole plant or ongoing by cutting outer leaves\n',
   },
   {
     'name': 'Buttercrunch',

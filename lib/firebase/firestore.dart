@@ -24,12 +24,16 @@ class FireStore {
     QuerySnapshot<Map<String, dynamic>> snapshot =
         await _store.collection(kPlantDescriptionCollectionPath).get();
     _descriptions ??= snapshot.docs
-        .map((e) => PlantDescription(
+        .map(
+          (e) => PlantDescription(
             id: e.id,
             name: e.data()['name'],
             daysToSprout: e.data()['daysToSprout'],
             sproutToHarvest: e.data()['sproutToHarvest'],
-            goodFor: e.data()['goodFor']))
+            goodFor: e.data()['goodFor'],
+            care: e.data()['care'] ?? '',
+          ),
+        )
         .toList();
     return _descriptions!;
   }

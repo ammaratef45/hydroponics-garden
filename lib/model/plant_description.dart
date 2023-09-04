@@ -1,9 +1,7 @@
 final class PlantDescription {
   final String id;
   final String name;
-  // TODO: add care instructions for plants
-  final String care = 'care instructions not added yet\n'
-      'want to contribite? visit [Github repo](https://github.com/ammaratef45/hydroponics-garden)';
+  final String care;
   final int daysToSprout;
   final int sproutToHarvest;
   final int goodFor;
@@ -11,12 +9,14 @@ final class PlantDescription {
   int get seedToHarvest => daysToSprout + sproutToHarvest;
   int get totalGrowth => seedToHarvest + goodFor;
 
-  PlantDescription(
-      {required this.id,
-      required this.name,
-      required this.daysToSprout,
-      required this.sproutToHarvest,
-      required this.goodFor});
+  PlantDescription({
+    required this.id,
+    required this.name,
+    required this.daysToSprout,
+    required this.sproutToHarvest,
+    required this.goodFor,
+    required this.care,
+  });
 
   @override
   int get hashCode => name.hashCode;
