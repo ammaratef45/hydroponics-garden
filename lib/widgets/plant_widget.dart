@@ -60,7 +60,25 @@ class _PlantPageState extends State<PlantPage> {
             Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text('planted: ${widget.plant.plantedDateString}'),
+                RichText(
+                  text: TextSpan(
+                    children: [
+                      const TextSpan(
+                        text: 'planted: ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: widget.plant.plantedDateString,
+                        style: const TextStyle(
+                          color: Colors.green,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 IconButton(
                   onPressed: () async {
                     DateTime? res = await showDatePicker(
@@ -80,11 +98,46 @@ class _PlantPageState extends State<PlantPage> {
                 )
               ],
             ),
-            // TODO: change style (make the part before colon bold)
             // TODO: show remaining number of days with the date (maybe click to toggle)
             if (!widget.plant.sprouted)
-              Text('Expected Sprout date: ${widget.plant.sproutDateString}'),
-            Text('Expected Harvest date: ${widget.plant.harvestDateString}'),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: 'Expected Sprout date: ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    TextSpan(
+                      text: widget.plant.sproutDateString,
+                      style: const TextStyle(
+                        color: Colors.green,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            RichText(
+              text: TextSpan(
+                children: [
+                  const TextSpan(
+                    text: 'Expected Harvest date: ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: widget.plant.harvestDateString,
+                    style: const TextStyle(
+                      color: Colors.green,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const Text(
               'Care instructions:',
               style: TextStyle(
