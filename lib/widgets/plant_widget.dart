@@ -98,7 +98,6 @@ class _PlantPageState extends State<PlantPage> {
                 )
               ],
             ),
-            // TODO: show remaining number of days with the date (maybe click to toggle)
             if (!widget.plant.sprouted)
               RichText(
                 text: TextSpan(
@@ -112,8 +111,12 @@ class _PlantPageState extends State<PlantPage> {
                     ),
                     TextSpan(
                       text: widget.plant.sproutDateString,
-                      style: const TextStyle(
-                        color: Colors.green,
+                      style: TextStyle(
+                        color:
+                            widget.plant.sproutDate.compareTo(DateTime.now()) >
+                                    0
+                                ? Colors.green
+                                : Colors.red,
                       ),
                     ),
                   ],
@@ -131,8 +134,11 @@ class _PlantPageState extends State<PlantPage> {
                   ),
                   TextSpan(
                     text: widget.plant.harvestDateString,
-                    style: const TextStyle(
-                      color: Colors.green,
+                    style: TextStyle(
+                      color:
+                          widget.plant.harvestDate.compareTo(DateTime.now()) > 0
+                              ? Colors.green
+                              : Colors.red,
                     ),
                   ),
                 ],
