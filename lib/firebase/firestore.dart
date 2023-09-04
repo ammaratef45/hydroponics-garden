@@ -59,11 +59,14 @@ class FireStore {
   }
 
   Future<void> addUpdatePlant(String uid, Plant p) {
-    return _store
+    CollectionReference<Map<String, dynamic>> collectionReference = _store
         .collection(kUsersCollectionPath)
         .doc(uid)
-        .collection(kPlantsList)
-        .add(p.doc());
+        .collection(kPlantsList);
+    if (p.id.isEmpty) {
+      return collectionReference.add(p.doc());
+    }
+    return collectionReference.doc(p.id).update(p.doc());
   }
 
   Future<void> deletePlant(String uid, Plant p) {

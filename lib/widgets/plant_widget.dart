@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown_editor/editor_preview.dart';
 import 'package:hydroponic_garden/constants.dart';
+import 'package:hydroponic_garden/firebase/auth.dart';
+import 'package:hydroponic_garden/firebase/firestore.dart';
 import 'package:hydroponic_garden/model/plant.dart';
 import 'package:hydroponic_garden/widgets/main_widget.dart';
 import 'package:hydroponic_garden/widgets/storage_image.dart';
@@ -16,6 +18,19 @@ class PlantPage extends StatefulWidget {
 }
 
 class _PlantPageState extends State<PlantPage> {
+  void _updatePlant() {
+    FireStore.instance()
+        .addUpdatePlant(
+          Auth.instance().user!.uid,
+          widget.plant,
+        )
+        .then(
+          (value) => log.d(
+            'Updated ${widget.plant.description.name}',
+          ),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MainWidget(
@@ -29,13 +44,17 @@ class _PlantPageState extends State<PlantPage> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text('Sprouted:'),
-                Checkbox(
-                    value: widget.plant.sprouted,
-                    onChanged: (v) {
-                      setState(() {
-                        widget.plant.sprouted = v ?? false;
-                      });
-                    }),
+                Switch(
+                  value: widget.plant.sprouted,
+                  onChanged: (v) {
+                    setState(
+                      () {
+                        widget.plant.sprouted = v;
+                        _updatePlant();
+                      },
+                    );
+                  },
+                ),
               ],
             ),
             Row(
@@ -53,6 +72,7 @@ class _PlantPageState extends State<PlantPage> {
                     if (res != null) {
                       setState(() {
                         widget.plant.plantedDate = res;
+                        _updatePlant();
                       });
                     }
                   },
