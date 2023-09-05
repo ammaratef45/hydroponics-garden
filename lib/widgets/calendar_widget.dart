@@ -1,5 +1,6 @@
 import 'package:calendar_view/calendar_view.dart';
 import 'package:flutter/material.dart';
+import 'package:hydroponic_garden/apis/calendar_api.dart';
 import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/firebase/firestore.dart';
 import 'package:hydroponic_garden/model/plant.dart';
@@ -27,6 +28,7 @@ class CalendarPage extends StatelessWidget {
         endTime: p.endHarvestDate,
       ));
     }
+    CalendarAPI();
   }
 
   @override

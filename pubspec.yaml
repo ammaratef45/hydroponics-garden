@@ -13,7 +13,7 @@ dependencies:
   intl: ^0.18.1
   firebase_core: ^2.15.0
   firebase_auth: ^4.7.2
-  google_sign_in: ^6.1.4
+  google_sign_in: ^6.1.5
   cloud_firestore: ^4.8.4
   firebase_storage: ^11.2.5
   logger: ^2.0.1
@@ -21,6 +21,9 @@ dependencies:
   flutter_markdown_editor: ^2.0.0
   calendar_view: ^1.0.4
   http: ^1.1.0
+  googleapis: ^11.4.0
+  googleapis_auth: ^1.4.1
+  extension_google_sign_in_as_googleapis_auth: ^2.0.11
 
 dev_dependencies:
   flutter_test:
