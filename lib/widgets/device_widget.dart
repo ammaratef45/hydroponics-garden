@@ -13,15 +13,20 @@ class DevicePage extends StatefulWidget {
 
 class _DevicePageState extends State<DevicePage> {
   num? brightness;
+  API api = API();
 
   _DevicePageState() {
     _loadStatus();
   }
 
   _loadStatus() async {
-    API api = API();
     brightness = await api.lightBrightness();
     setState(() {});
+  }
+
+  _updateBrightness(num v) async {
+    await api.setLightBrightness(v);
+    await _loadStatus();
   }
 
   @override
@@ -29,7 +34,20 @@ class _DevicePageState extends State<DevicePage> {
     return MainWidget(
       body: Center(
         child: Column(
-          children: [Text('Brightness: $brightness')],
+          children: [
+            Text('Brightness: $brightness%'),
+            Slider(
+              value: brightness?.toDouble() ?? 0,
+              max: 100,
+              divisions: 5,
+              label: 'Brightness: $brightness%',
+              onChanged: (val) {
+                brightness = val;
+                setState(() {});
+                _updateBrightness(val);
+              },
+            ),
+          ],
         ),
       ),
     );
