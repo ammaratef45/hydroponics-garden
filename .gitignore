@@ -48,3 +48,4 @@ secrets.dart
 launch.json
 GoogleService-Info.plist
 google-services.json
+firebase_options.dart
