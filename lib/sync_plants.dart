@@ -87,103 +87,155 @@ List<Map<String, dynamic>> values = [
     'name': 'Buttercrunch',
     'daysToSprout': 9,
     'sproutToHarvest': 55,
-    'goodFor': 28
+    'goodFor': 28,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Cherry Tomato',
     'daysToSprout': 13,
     'sproutToHarvest': 103,
-    'goodFor': 84
+    'goodFor': 84,
+    'care': '- Remember thinning after first true leaf\n',
   },
-  {'name': 'Arugula', 'daysToSprout': 13, 'sproutToHarvest': 48, 'goodFor': 32},
-  {'name': 'Breen', 'daysToSprout': 14, 'sproutToHarvest': 59, 'goodFor': 28},
+  {
+    'name': 'Arugula',
+    'daysToSprout': 13,
+    'sproutToHarvest': 48,
+    'goodFor': 32,
+    'care': '- Remember thinning after first true leaf\n',
+  },
+  {
+    'name': 'Breen',
+    'daysToSprout': 14,
+    'sproutToHarvest': 59,
+    'goodFor': 28,
+    'care': '- Remember thinning after first true leaf\n',
+  },
   {
     'name': 'Jalapeño',
     'daysToSprout': 19,
     'sproutToHarvest': 89,
-    'goodFor': 98
+    'goodFor': 98,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Flashy Trout Back',
     'daysToSprout': 8,
     'sproutToHarvest': 44,
-    'goodFor': 36
+    'goodFor': 36,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Celery',
     'daysToSprout': 22,
     'sproutToHarvest': 150,
-    'goodFor': 128
+    'goodFor': 128,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Green Mustard',
     'daysToSprout': 13,
     'sproutToHarvest': 44,
-    'goodFor': 42
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Cardinale',
     'daysToSprout': 13,
     'sproutToHarvest': 44,
-    'goodFor': 42
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Butterhead',
     'daysToSprout': 14,
     'sproutToHarvest': 59,
-    'goodFor': 28
+    'goodFor': 28,
+    'care': '- Remember thinning after first true leaf\n',
   },
-  {'name': 'Kale', 'daysToSprout': 14, 'sproutToHarvest': 73, 'goodFor': 42},
+  {
+    'name': 'Kale',
+    'daysToSprout': 14,
+    'sproutToHarvest': 73,
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
+  },
   {
     'name': 'Endive Lettuce',
     'daysToSprout': 8,
     'sproutToHarvest': 56,
-    'goodFor': 48
+    'goodFor': 48,
+    'care': '- Remember thinning after first true leaf\n',
   },
-  {'name': 'Bok Choi', 'daysToSprout': 8, 'sproutToHarvest': 41, 'goodFor': 25},
+  {
+    'name': 'Bok Choi',
+    'daysToSprout': 8,
+    'sproutToHarvest': 41,
+    'goodFor': 25,
+    'care': '- Remember thinning after first true leaf\n',
+  },
   {
     'name': 'Kale Lacinato',
     'daysToSprout': 14,
     'sproutToHarvest': 65,
-    'goodFor': 42
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Lollo Rossa',
     'daysToSprout': 9,
     'sproutToHarvest': 40,
-    'goodFor': 42
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
   },
-  {'name': 'Matilda', 'daysToSprout': 14, 'sproutToHarvest': 52, 'goodFor': 28},
+  {
+    'name': 'Matilda',
+    'daysToSprout': 14,
+    'sproutToHarvest': 52,
+    'goodFor': 28,
+    'care': '- Remember thinning after first true leaf\n',
+  },
   {
     'name': 'Monte Carlo',
     'daysToSprout': 14,
     'sproutToHarvest': 93,
-    'goodFor': 56
+    'goodFor': 56,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Purslane',
     'daysToSprout': 11,
     'sproutToHarvest': 10,
-    'goodFor': 32
+    'goodFor': 32,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Red Amaranth',
     'daysToSprout': 9,
     'sproutToHarvest': 110,
-    'goodFor': 25
+    'goodFor': 25,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Red Mustard',
     'daysToSprout': 13,
     'sproutToHarvest': 33,
-    'goodFor': 35
+    'goodFor': 35,
+    'care': '- Remember thinning after first true leaf\n',
   },
-  {'name': 'Red Sail', 'daysToSprout': 9, 'sproutToHarvest': 40, 'goodFor': 42},
+  {
+    'name': 'Red Sail',
+    'daysToSprout': 9,
+    'sproutToHarvest': 40,
+    'goodFor': 42,
+    'care': '- Remember thinning after first true leaf\n',
+  },
   {
     'name': 'Red Salad Bowl',
     'daysToSprout': 8,
     'sproutToHarvest': 45,
-    'goodFor': 45
+    'goodFor': 45,
+    'care': '- Remember thinning after first true leaf\n',
   },
   {
     'name': 'Red Sorrel',
