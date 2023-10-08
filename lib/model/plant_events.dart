@@ -30,7 +30,7 @@ class PlantEvents {
     List<CalendarEventData> res = [];
     for (int i = 0;
         i < _plant.plantedDate.getDayDifference(_plant.sproutDate);
-        i++) {
+        i += 3) {
       DateTime date = _plant.plantedDate.add(Duration(days: i));
       res.add(CalendarEventData(
         title: 'care ${_plant.description.name} - Day $i',
