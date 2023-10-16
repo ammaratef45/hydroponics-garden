@@ -31,4 +31,28 @@ class API {
       throw Exception('Failed to set brightness');
     }
   }
+
+  Future<bool> isPumpOn() async {
+    final response = await http.get(Uri.parse('$baseUrl/pump/stats'));
+    if (response.statusCode == 200) {
+      // TODO parse the response to get the value
+      return true;
+    } else {
+      throw Exception('Failed to load pump status');
+    }
+  }
+
+  Future<void> pumpOnOff(bool on) async {
+    final response = await http.post(
+      Uri.parse('$baseUrl/pump/${on ? 'on' : 'off'}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+    if (response.statusCode == 200) {
+      log.d('Successfully adjusted pump');
+    } else {
+      throw Exception('Failed to adjust pump');
+    }
+  }
 }
