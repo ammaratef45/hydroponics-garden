@@ -13,21 +13,54 @@ class DevicePage extends StatefulWidget {
 
 class _DevicePageState extends State<DevicePage> {
   num? brightness;
+  bool? pump;
   API api = API();
 
   _DevicePageState() {
     _loadStatus();
   }
 
-  _loadStatus() async {
+  Future<void> _loadStatus() async {
     brightness = await api.lightBrightness();
+    pump = await api.isPumpOn();
     setState(() {});
   }
 
-  _updateBrightness(num v) async {
+  Future<void> _updateBrightness(num v) async {
     await api.setLightBrightness(v);
     await _loadStatus();
   }
+
+  Future<void> _updatePump(bool v) async {
+    await api.pumpOnOff(v);
+    await _loadStatus();
+  }
+
+  List<Widget> _brightness() => [
+        Text('Brightness: $brightness%'),
+        Slider(
+          value: brightness?.toDouble() ?? 0,
+          max: 100,
+          divisions: 5,
+          label: 'Brightness: $brightness%',
+          onChanged: (val) {
+            brightness = val;
+            setState(() {});
+            _updateBrightness(val);
+          },
+        ),
+      ];
+
+  List<Widget> _pump() => [
+        Text('Pump: ${pump != null ? {pump! ? 'on' : 'off'} : 'unknown'}'),
+        Switch(
+            value: pump ?? false,
+            onChanged: (v) {
+              pump = v;
+              setState(() {});
+              _updatePump(v);
+            }),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +68,8 @@ class _DevicePageState extends State<DevicePage> {
       body: Center(
         child: Column(
           children: [
-            Text('Brightness: $brightness%'),
-            Slider(
-              value: brightness?.toDouble() ?? 0,
-              max: 100,
-              divisions: 5,
-              label: 'Brightness: $brightness%',
-              onChanged: (val) {
-                brightness = val;
-                setState(() {});
-                _updateBrightness(val);
-              },
-            ),
+            ..._brightness(),
+            ..._pump(),
           ],
         ),
       ),
