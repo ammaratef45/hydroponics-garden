@@ -34,8 +34,8 @@ class LoginPage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  left: 20,
-                  right: 20,
+                  left: 10,
+                  right: 10,
                 ),
                 child: MaterialButton(
                   color: Colors.teal[100],
@@ -55,12 +55,12 @@ class LoginPage extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       const Text(
                         'Sign In with Google',
                         style: TextStyle(
-                          fontSize: 25,
+                          fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

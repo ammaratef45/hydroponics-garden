@@ -18,7 +18,7 @@ import 'package:hydroponic_garden/secrets.dart';
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      return Secrets.webOptions;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return Secrets.iosOptions;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -52,13 +49,4 @@ class DefaultFirebaseOptions {
         );
     }
   }
-
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: Secrets.apiKey,
-    appId: Secrets.appId,
-    messagingSenderId: Secrets.messagingSenderId,
-    projectId: Secrets.projectId,
-    authDomain: Secrets.authDomain,
-    storageBucket: Secrets.storageBucket,
-  );
 }

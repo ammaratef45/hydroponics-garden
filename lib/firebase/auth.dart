@@ -35,18 +35,15 @@ class Auth {
   }
 
   Future<void> signIn() async {
-    if (kIsWeb) {
-      GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication? googleAuth =
-          await googleUser?.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      return;
-    }
-    throw UnimplementedError('currently only web is supported');
+    GoogleSignInAccount? googleUser =
+        kIsWeb ? await _googleSignIn.signIn() : await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+    await FirebaseAuth.instance.signInWithCredential(credential);
   }
 
   Future<AuthClient?> apiClient() {
