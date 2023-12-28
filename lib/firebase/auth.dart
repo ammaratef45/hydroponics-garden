@@ -56,4 +56,8 @@ class Auth {
   Future<void> logout() {
     return _auth.signOut();
   }
+
+  bool isAdmin() {
+    return user?.uid == 'aXaIrTiGMSf14c99NCwqIArRToe2';
+  }
 }

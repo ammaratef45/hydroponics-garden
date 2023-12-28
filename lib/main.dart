@@ -6,6 +6,7 @@ import 'package:hydroponic_garden/model/plant.dart';
 import 'package:hydroponic_garden/widgets/calendar_widget.dart';
 import 'package:hydroponic_garden/widgets/device_widget.dart';
 import 'package:hydroponic_garden/widgets/login_widget.dart';
+import 'package:hydroponic_garden/widgets/pages/admin_widget.dart';
 import 'package:hydroponic_garden/widgets/plant_widget.dart';
 import 'package:hydroponic_garden/widgets/plants_widget.dart';
 
@@ -54,6 +55,10 @@ class MyApp extends StatelessWidget {
           case DevicePage.routeName:
             return MaterialPageRoute(builder: (context) {
               return const DevicePage();
+            });
+          case AdminWidget.routeName:
+            return MaterialPageRoute(builder: (context) {
+              return const AdminWidget();
             });
           default:
             assert(false, 'Need to implement ${settings.name}');

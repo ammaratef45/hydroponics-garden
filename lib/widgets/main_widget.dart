@@ -3,6 +3,7 @@ import 'package:hydroponic_garden/firebase/auth.dart';
 import 'package:hydroponic_garden/widgets/calendar_widget.dart';
 import 'package:hydroponic_garden/widgets/device_widget.dart';
 import 'package:hydroponic_garden/widgets/login_widget.dart';
+import 'package:hydroponic_garden/widgets/pages/admin_widget.dart';
 import 'package:hydroponic_garden/widgets/plants_widget.dart';
 
 class MainWidget extends StatelessWidget {
@@ -46,6 +47,7 @@ class MainWidget extends StatelessWidget {
       floatingActionButton: floatingActionButton,
       bottomNavigationBar: showBottomNavigationMenu
           ? BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
               currentIndex: navigationIndex,
               onTap: (index) {
                 switch (index) {
@@ -58,23 +60,31 @@ class MainWidget extends StatelessWidget {
                   case 2:
                     Navigator.popAndPushNamed(context, DevicePage.routeName);
                     break;
+                  case 3:
+                    Navigator.popAndPushNamed(context, AdminWidget.routeName);
+                    break;
                   default:
                     throw 'invalid page';
                 }
               },
-              items: const [
-                BottomNavigationBarItem(
+              items: [
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.list),
                   label: 'plants',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.calendar_month),
                   label: 'calendar',
                 ),
-                BottomNavigationBarItem(
+                const BottomNavigationBarItem(
                   icon: Icon(Icons.devices),
                   label: 'Device',
                 ),
+                if (Auth.instance().isAdmin())
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.devices),
+                    label: 'Admin',
+                  ),
               ],
             )
           : null,
