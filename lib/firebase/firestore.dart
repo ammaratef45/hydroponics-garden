@@ -38,6 +38,23 @@ class FireStore {
     return _descriptions!;
   }
 
+  Stream<List<PlantDescription>> plantsDescriptionsStream() {
+    return _store.collection(kPlantDescriptionCollectionPath).snapshots().map(
+          (e) => e.docs
+              .map(
+                (e) => PlantDescription(
+                  id: e.id,
+                  name: e.data()['name'],
+                  daysToSprout: e.data()['daysToSprout'],
+                  sproutToHarvest: e.data()['sproutToHarvest'],
+                  goodFor: e.data()['goodFor'],
+                  care: e.data()['care'] ?? '',
+                ),
+              )
+              .toList(),
+        );
+  }
+
   Stream<List<Plant>> userPlants(String uid) {
     return _store
         .collection(kUsersCollectionPath)
